@@ -25,5 +25,16 @@ We would like to thank the following people for their contributions to the sourc
 * Jarkko Vatjus-Anttila for contributing the original Linux/X11 port for the OpenGL ES 2.0 Programming Guide
 * Eduardo Pelegri-Llopart and Darryl Gough for contributing the Blackberry Native SDK port for the OpenGL ES 2.0 Programming Guide (we have not yet ported the ES 3.0 book to a Blackberry platform)
 
+## Android Tips ###
+1.  Windown connection:
+* Surface handle from Java side (SurfaceView, Surface) when it is created.
+* NDK API ANativeWindow_fromSurface(env, JavaSurfaceObject) returns a native window.
+* OpenGL context can come to play.
+2. GameActivity secrete steps.
+* `hasCode` in AndroidManifext.xml can not be false
+  (for NativeActivity it should be false if app does not derive class from NativeActivity).
+  This is because that GameActivity is outside the framework, app will always have java byte code.
+* Static lib approach does not support C app, it has to be C++ app
+* GameActivity can be the startup Activity (means that there is no application hand created Java code).
 
 
