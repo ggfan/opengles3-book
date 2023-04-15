@@ -24,10 +24,6 @@ cmake_path(SET COMMON_PATH     NORMALIZE ${SRC_PATH}/../../Common)
 cmake_path(SET COMMON_INC_PATH NORMALIZE ${COMMON_PATH}/Include)
 cmake_path(SET COMMON_SRC_PATH NORMALIZE ${COMMON_PATH}/Source)
 
-# build native_app_glue as a static lib
-# add_library(native_app_glue STATIC
-#    ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
-
 # now build app's shared lib
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DANDROID -std=c++11 -Wall -Werror")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DANDROID -Wall -Werror -Wno-unused-but-set-variable")
@@ -42,10 +38,10 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
     ${COMMON_SRC_PATH}/esTransform.c
     ${COMMON_SRC_PATH}/esUtil.c
     ${COMMON_SRC_PATH}/Android/esUtil_Android.c
-    ${SRC_PATH}/Hello_Triangle.cpp)
+    ${SRC_PATH}/${CMAKE_PROJECT_NAME}.c
+    dummy.cpp)
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-#    ${ANDROID_NDK}/sources/android/native_app_glue
     ${COMMON_INC_PATH}
     ${SRC_PATH})
 target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE "-DANDROID")

@@ -25,7 +25,7 @@ We would like to thank the following people for their contributions to the sourc
 * Jarkko Vatjus-Anttila for contributing the original Linux/X11 port for the OpenGL ES 2.0 Programming Guide
 * Eduardo Pelegri-Llopart and Darryl Gough for contributing the Blackberry Native SDK port for the OpenGL ES 2.0 Programming Guide (we have not yet ported the ES 3.0 book to a Blackberry platform)
 
-## Android Tips ###
+## Android Tips ##
 1.  Windown connection:
 * Surface handle from Java side (SurfaceView, Surface) when it is created.
 * NDK API ANativeWindow_fromSurface(env, JavaSurfaceObject) returns a native window.
@@ -36,5 +36,14 @@ We would like to thank the following people for their contributions to the sourc
   This is because that GameActivity is outside the framework, app will always have java byte code.
 * Static lib approach does not support C app, it has to be C++ app
 * GameActivity can be the startup Activity (means that there is no application hand created Java code).
+
+## Port to Gradle Build Tips ##
+1. copy the app directory (module) over from an existing one.
+1. copy the project scripts over (build.gradle, gradle dir, settings.gradle).
+1. update cmakelist.txt to include the new C files, and C++ shared lib name.
+1. update androidManifest.txt with the new shared lib name.
+1. update the string.xml resource to reflect the new sample name.
+1. update module build.gradle for the appId, namespace and minSdkLevel.
+
 
 

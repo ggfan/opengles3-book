@@ -14,13 +14,6 @@ android {
             cmake.arguments '-DANDROID_STL=c++_static'
         }
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'),
-                    'proguard-rules.pro'
-        }
-    }
     externalNativeBuild {
         cmake.path 'src/main/cpp/CMakeLists.txt'
         cmake.version '3.22.1'
@@ -30,9 +23,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'com.openglesbook.HelloTriangle'
 
     buildFeatures.prefab true
+    buildTypes.release.minifyEnabled true
+    namespace 'com.openglesbook.HelloTriangle'
 }
 
 dependencies {
